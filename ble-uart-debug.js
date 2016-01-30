@@ -4,7 +4,7 @@ var _characteristic = null;
 
 noble.on('stateChange', function(state) {
   if (state === 'poweredOn') {
-    noble.startScanning(['ffe0'], true);
+    noble.startScanning(['ffe0'], false);
   } else {
     noble.stopScanning();
   }
@@ -20,12 +20,12 @@ noble.on('discover', function(peripheral) {
   console.log('\tcan I interest you in any of the following advertised services:');
   console.log('\t\t' + JSON.stringify(peripheral.advertisement.serviceUuids));
 
-  var serviceUuids = peripheral.advertisement.serviceUuids;
-if (serviceUuids) {
-      console.log('  Service UUIDs     = ' + serviceUuids);
-    }
 
-  peripheral.connect();
+  peripheral.connect(
+    function (error) {
+      console.log(error);
+    }
+  );
 
 
   peripheral.discoverSomeServicesAndCharacteristics(['ffe0'], [],
@@ -45,15 +45,7 @@ if (serviceUuids) {
       console.log('\t\t' + JSON.stringify(serviceData[i].uuid) + ': ' + JSON.stringify(serviceData[i].data.toString('hex')));
     }
   }
-  if (peripheral.advertisement.manufacturerData) {
-    console.log('\there is my manufacturer data:');
-    console.log('\t\t' + JSON.stringify(peripheral.advertisement.manufacturerData.toString('hex')));
-  }
-  if (peripheral.advertisement.txPowerLevel !== undefined) {
-    console.log('\tmy TX power level is:');
-    console.log('\t\t' + peripheral.advertisement.txPowerLevel);
-  }
-
+ 
   var buf = new Buffer("AoYVzaOYjTy+lexHrJgFyXrglvFY1QBhm6mWRW7eZu37Aw==", 'base64'); // Ta-da  
   setTimeout(function(){ writeBLEdata(buf); }, 3000);
 });
