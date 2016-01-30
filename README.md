@@ -12,3 +12,8 @@
 ```sh
 sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
 ```
+
+### Run the Script
+```sh
+NOBLE_HCI_DEVICE_ID=1 sudo node ble-uart-debug.js 
+```
