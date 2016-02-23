@@ -1,4 +1,4 @@
-# bluebuy-node-client
+# node-bluetooth-ble-debugger
 ![image](https://cloud.githubusercontent.com/assets/1736570/12698258/7bba3f70-c798-11e5-9b4f-35c71b4c6868.png)
 
 
