@@ -64,6 +64,3 @@ function writeBLEdata(chunk) {
     console.log("No connection");
   }
 }
-
-//http://bluebuy.herokuapp.com/api/get_vending_machine?ble_ssid=bluebuy-12
-//AoYVzaOYjTy+lexHrJgFyXrglvFY1QBhm6mWRW7eZu37Aw==
